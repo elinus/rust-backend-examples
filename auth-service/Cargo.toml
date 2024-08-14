@@ -4,3 +4,14 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+actix-web = "4.9.0"
+actix-rt = { version = "2.10.0" }
+config = "0.14.0"
+dotenv = "0.15.0"
+serde = { version = "1.0.207", features = ["derive"] }
+eyre = "0.6.12"
+color-eyre = "0.6.3"
+tracing = "0.1.40"
+tracing-futures = "0.2.5"
+tracing-log = { version = "0.2.0" }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
