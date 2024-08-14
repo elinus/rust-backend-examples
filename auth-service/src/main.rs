@@ -4,6 +4,7 @@ extern crate validator_derive;
 mod config;
 mod handlers;
 mod models;
+mod db;
 
 use actix_web::{App, HttpServer, middleware::Logger};
 use color_eyre::Result;
