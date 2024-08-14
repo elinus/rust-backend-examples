@@ -17,9 +17,13 @@ async fn main() -> Result<()> {
 
     info!("Starting server at http://{}:{}", config.host, config.port);
 
+    let pool = config.db_pool().await
+        .expect("Database configuration");
+
     HttpServer::new(move || {
         App::new()
             .wrap(Logger::default())
+            .app_data(pool.clone())
             .configure(app_config)
     })
         .bind(format!("{}:{}", config.host, config.port))?
