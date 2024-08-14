@@ -15,3 +15,11 @@ tracing = "0.1.40"
 tracing-futures = "0.2.5"
 tracing-log = { version = "0.2.0" }
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+sqlx = { version = "0.8.0", default-features = false, features = ["runtime-tokio", "macros", "postgres", "uuid", "chrono"] }
+uuid = { version = "1.10.0", features = ["serde"] }
+chrono = { version = "0.4.38", features = ["serde"] }
+validator = "0.18.1"
+validator_derive = "0.18.1"
+jsonwebtoken = "9.3.0"
+argonautica = { version = "0.2.0", features = ["simd"] }
+futures = { version = "0.3.30", features = ["compat"] }
