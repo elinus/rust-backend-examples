@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate validator_derive;
+
 mod config;
 mod handlers;
 mod models;
@@ -20,10 +21,13 @@ async fn main() -> Result<()> {
     let pool = config.db_pool().await
         .expect("Database configuration");
 
+    let crypto_service = config.crypto_service();
+
     HttpServer::new(move || {
         App::new()
             .wrap(Logger::default())
             .app_data(pool.clone())
+            .app_data(crypto_service.clone())
             .configure(app_config)
     })
         .bind(format!("{}:{}", config.host, config.port))?
