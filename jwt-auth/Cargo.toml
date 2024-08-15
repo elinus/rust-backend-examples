@@ -1,0 +1,12 @@
+[package]
+name = "jwt-auth"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.39.2", features = ["full"] }
+axum = "0.7.5"
+jsonwebtoken = "9.3.0"
+serde = "1.0.207"
+serde_json = "1.0.125"
+chrono = "0.4.38"
