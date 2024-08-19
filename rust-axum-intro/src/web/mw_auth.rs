@@ -64,7 +64,8 @@ pub async fn mw_ctx_resolver(
     if result_ctx.is_err()
         && !matches!(result_ctx, Err(Error::AuthFailNoAuthTokenCookie))
     {
-        cookies.remove(Cookie::named(AUTH_TOKEN));
+        // cookies.remove(Cookie::named(AUTH_TOKEN));
+        cookies.remove(Cookie::from(AUTH_TOKEN))
     }
 
     // Store the ctx_result in the request extension
