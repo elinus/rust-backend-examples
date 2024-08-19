@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Weather and Air Quality in {{ city }}</h2>
+
+<form method="GET" action="{{ url_for('home') }}">
+    <label for="city">Select City:</label>
+    <input type="text" name="city" placeholder="Enter city name" value="{{ city }}">
+    <button type="submit">Search</button>
+</form>
+
+<div class="weather">
+    <h3>Weather</h3>
+    <p>City: {{ weather.city }}</p>
+    <p>Temperature: {{ weather.temperature }}°C</p>
+    <p>Humidity: {{ weather.humidity }}%</p>
+    <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
+</div>
+
+<div class="air-quality">
+    <h3>Air Quality</h3>
+    <p>AQI: {{ air_quality.pm2_5 }}</p>
+</div>
+{% endblock %}
