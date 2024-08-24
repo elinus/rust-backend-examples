@@ -6,9 +6,12 @@ mod web;
 mod log;
 mod error;
 mod ctx;
+mod config;
+// #[cfg(test)] // Commented during early development.
+pub mod _dev_utils;
 
 pub use self::error::{Error, Result};
-
+pub use config::config;
 use crate::model::ModelManager;
 use crate::web::mw_auth::mw_ctx_resolve;
 use crate::web::mw_res_map::mw_response_map;
@@ -28,6 +31,9 @@ async fn main() -> Result<()> {
         .with_target(false)
         .with_env_filter(EnvFilter::from_default_env())
         .init();
+
+    // -- FOR DEV ONLY
+    _dev_utils::init_dev().await;
 
     // Initialize ModelManager.
     let mm = ModelManager::new().await?;
@@ -50,7 +56,7 @@ async fn main() -> Result<()> {
 
     let listener = tokio::net::TcpListener::bind(addr)
         .await
-        . unwrap();
+        .unwrap();
     axum::serve(listener, routes_all.into_make_service())
         .await
         .unwrap();
