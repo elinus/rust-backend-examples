@@ -17,10 +17,18 @@ use axum::{middleware, Router};
 use std::net::SocketAddr;
 use tower_cookies::CookieManagerLayer;
 use crate::web::routes_login::routes;
+use tracing::info;
+use tracing_subscriber::EnvFilter;
 // endRegion:  --- Modules
 
 #[tokio::main]
 async fn main() -> Result<()> {
+    tracing_subscriber::fmt()
+        .without_time() // For early local development.
+        .with_target(false)
+        .with_env_filter(EnvFilter::from_default_env())
+        .init();
+
     // Initialize ModelManager.
     let mm = ModelManager::new().await?;
 
@@ -38,7 +46,7 @@ async fn main() -> Result<()> {
 
     // region:  --- Start Server
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
-    println!("->> {:<12} - {addr}\n", "LISTENING");
+    info!("{:<12} - {addr}\n", "LISTENING");
 
     let listener = tokio::net::TcpListener::bind(addr)
         .await
