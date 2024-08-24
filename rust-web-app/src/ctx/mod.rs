@@ -9,7 +9,7 @@ pub struct Ctx {
     user_id: i64,
 }
 
-// Constructor.
+// Constructors.
 impl Ctx {
     pub fn root_ctx() -> Self {
         Ctx {

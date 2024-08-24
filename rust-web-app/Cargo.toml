@@ -15,6 +15,7 @@ tower-http = { version = "0.5.2", features = ["fs"] }
 tower-cookies = "0.10.0"
 # -- Data
 sqlx = { version = "0.8.0", features = [ "runtime-tokio-rustls", "postgres", "uuid", "time" ] }
+sqlb = "0.3" # Optional
 # -- Tracing
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
@@ -27,3 +28,4 @@ strum_macros = "0.26.4"
 [dev-dependencies]
 anyhow = "1.0.86"
 httpc-test = "0.1.10"
+serial_test = "3.1.1"
