@@ -1,9 +1,10 @@
 # rust-web-app
 
 ## Starting the DB
+
 ```sh
 # Start postgresql server docker image:
-docker run --rm --name pg -p 5432:5432 -e POSTGRES_PASSWORD=welcome postres:15
+docker run --rm --name pg -p 5432:5432 -e POSTGRES_PASSWORD=welcome postgres:16
 
 # (optional) To have a psql terminal got pg.
 # In another terminal (tab) run psql:
@@ -36,6 +37,7 @@ cargo watch -q -c -w -x "test model::task::tests::test_create -- --nocapture"
 ```
 
 ## Dev
+
 ```sh
 # Terminal 1 - To run the server.
 cargo run
@@ -43,7 +45,9 @@ cargo run
 # Terminal 2 - To run the tests.
 cargo run --example qucik_dev
 ```
+
 ## Unit Test
+
 ```sh
 cargo test -- --nocapture
 

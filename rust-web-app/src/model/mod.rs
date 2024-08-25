@@ -18,13 +18,13 @@
 //!
 
 // region:  --- Modules
+mod base;
 mod error;
 mod store;
 pub mod task;
-mod base;
 
-pub use self::error::{Error, Result};
-use crate::model::store::{new_db_pool, Db};
+pub use self::error::{ Error, Result };
+use crate::model::store::{ new_db_pool, Db };
 
 // endRegion:  --- Modules
 

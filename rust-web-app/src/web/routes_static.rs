@@ -4,8 +4,6 @@ use axum::routing::{any_service, MethodRouter};
 use tower_http::services::ServeDir;
 use crate::config;
 
-const WEB_FOLDER: &str = "web-folder";
-
 // Note: Here we can just return a MethodRouter rather than a full Router
 //       Since ServiceDir is a Service.
 pub fn serve_dir() -> MethodRouter {

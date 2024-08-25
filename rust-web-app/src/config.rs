@@ -1,4 +1,4 @@
-use crate::{Error, Result};
+use crate::{ Error, Result };
 use std::env;
 use std::sync::OnceLock;
 
@@ -33,5 +33,8 @@ impl Config {
 }
 
 fn get_env(name: &'static str) -> Result<String> {
+    // for (key, value) in env::vars() {
+    //     println!("{key}: {value}");
+    // }
     env::var(name).map_err(|_| Error::ConfigMissingEnv(name))
 }
